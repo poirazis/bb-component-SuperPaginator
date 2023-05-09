@@ -3,8 +3,8 @@
   "metadata": {},
   "schema": {
     "name": "bb-component-SuperPaginator",
-    "friendlyName": "Super Navigator",
-    "description": "A Pagination Component for Budibase",
+    "friendlyName": "Super Paginator",
+    "description": "A Pagination Component for Budibase ",
     "icon": "Text",
     "hasChildren": true,
     "settings": [
