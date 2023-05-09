@@ -3,14 +3,56 @@
   "metadata": {},
   "schema": {
     "name": "bb-component-SuperPaginator",
-    "friendlyName": "bb-component-SuperPaginator",
+    "friendlyName": "Super Navigator",
     "description": "A Pagination Component for Budibase",
     "icon": "Text",
+    "hasChildren": true,
     "settings": [
       {
         "type": "text",
-        "key": "text",
-        "label": "Text"
+        "key": "pages",
+        "label": "Total Pages",
+        "defaultValue" : 10
+      },
+      {
+        "type": "text",
+        "key": "pageSize",
+        "label": "Page Size",
+        "defaultValue": 25
+      },
+      {
+        "type": "number",
+        "key": "page",
+        "label": "Active Page",
+        "min": 1,
+        "defaultValue": 1
+      },
+      {
+        "type": "number",
+        "key": "pageButtons",
+        "label": "Max Buttons",
+        "min": 5,
+        "max": 30,
+        "defaultValue": 8
+      }
+    ],
+    "context": [
+      {
+        "type": "static",
+        "values": [
+          {
+            "label": "Offset",
+            "key": "offset",
+            "type": "number",
+            "defaultValue": 0
+          },
+          {
+            "label": "Limit",
+            "key": "limit",
+            "type": "number",
+            "defaultValue": 25
+          }
+        ]
       }
     ]
   }

@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@crownframework/svelte-error-boundary": "^1.0.3",
+    "@spectrum-css/actionbutton": "^3.0.37",
+    "@spectrum-css/pagination": "^6.0.12",
     "svelte": "^3.49.0"
   },
   "devDependencies": {
