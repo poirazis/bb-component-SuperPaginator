@@ -6,10 +6,12 @@
 
   export let page = 1 
   export let pageSize = 25
-  export let pages = 10
+  export let pages 
   export let pageButtons = 8
+  export let records 
 
   let startIndex = 1
+  $: pages = Math.ceil( records / pageSize )
   $: lastIndex = pageButtons >= pages ? pages : pageButtons + startIndex - 3
 
   $: dataContext = { offset: Number(pageSize * (page - 1)), limit: Number(pageSize) }
@@ -64,32 +66,44 @@
   <Provider data={dataContext}>
     <slot />
   </Provider>
-  <nav style:margin-top={"1rem"} class="spectrum-Pagination spectrum-Pagination--listing">
+ 
+  <div class="paginator">
+      <nav style:margin-top={"1rem"} class="spectrum-Pagination spectrum-Pagination--listing">
 
-    <button 
-      disabled={page == 1} 
-      on:click={handlePrevious} 
-      class="spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-ActionButton--quiet">
-      <span class="spectrum-Button-label">    
-        <svg class="spectrum-Icon spectrum-UIIcon-ChevronLeft100" focusable="false" aria-hidden="true" aria-label="ChevronLeft">
-        <use xlink:href="#spectrum-css-icon-Chevron100"></use>
-      </svg></span>
-    </button>
+        <button 
+          disabled={page == 1} 
+          on:click={handlePrevious} 
+          class="spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-ActionButton--quiet">
+          <span class="spectrum-Button-label">    
+            <svg class="spectrum-Icon spectrum-UIIcon-ChevronLeft100" focusable="false" aria-hidden="true" aria-label="ChevronLeft">
+            <use xlink:href="#spectrum-css-icon-Chevron100"></use>
+          </svg></span>
+        </button>
 
-    {#each buttons as button}
-      <button 
-        on:click={ () => handleClick(button) }  
-        class:is-selected={button == page } 
-        class="spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-ActionButton--quiet">
-        <span class="spectrum-ActionButton-label">{button}</span>
-      </button>
-    {/each}
+        {#each buttons as button}
+          <button 
+            on:click={ () => handleClick(button) }  
+            class:is-selected={button == page } 
+            class="spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-ActionButton--quiet">
+            <span class="spectrum-ActionButton-label">{button}</span>
+          </button>
+        {/each}
 
-    <button disabled={page == pages} on:click={handleNext} class="spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-ActionButton--quiet">
-      <svg class="spectrum-Icon spectrum-UIIcon-ChevronRight100" focusable="false" aria-hidden="true" aria-label="ChevronLeft">
-        <use xlink:href="#spectrum-css-icon-Chevron100"></use>
-      </svg>
-    </button>
+        <button disabled={page == pages} on:click={handleNext} class="spectrum-ActionButton spectrum-ActionButton--sizeM spectrum-ActionButton--quiet">
+          <svg class="spectrum-Icon spectrum-UIIcon-ChevronRight100" focusable="false" aria-hidden="true" aria-label="ChevronLeft">
+            <use xlink:href="#spectrum-css-icon-Chevron100"></use>
+          </svg>
+        </button>
 
-  </nav>
+      </nav>
+  </div>
 </div>
+
+<style>
+  .paginator {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0.85rem;
+  }
+</style>

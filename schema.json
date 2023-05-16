@@ -10,9 +10,9 @@
     "settings": [
       {
         "type": "text",
-        "key": "pages",
-        "label": "Total Pages",
-        "defaultValue" : 10
+        "key": "records",
+        "label": "Total Records",
+        "defaultValue" : "1000"
       },
       {
         "type": "text",
